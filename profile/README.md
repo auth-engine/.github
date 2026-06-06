@@ -11,3 +11,9 @@ AuthEngine is built for teams that run **more than one application** or **more t
 AuthEngine provides a production-ready backend, an admin dashboard, and infrastructure tooling for hybrid deployment on AWS (EC2, RDS) with managed Redis and MongoDB.
 
 Refer to the **[documentation](https://docs.authengine.org)** for deployment guides, architecture, API reference, and OAuth2/OIDC integration.
+
+---
+
+## Contributing
+
+We welcome issues and pull requests. Read **[Contributing](https://docs.authengine.org/contributing/)** 
