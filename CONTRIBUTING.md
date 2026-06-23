@@ -12,7 +12,9 @@ Thank you for your interest in AuthEngine. This guide applies to all repositorie
 |------------|---------------------|
 | [auth-engine](https://github.com/auth-engine/auth-engine) | FastAPI backend, IAM, OIDC, migrations |
 | [auth-engine-dashboard](https://github.com/auth-engine/auth-engine-dashboard) | Next.js admin UI |
-| [auth-engine-infra](https://github.com/auth-engine/auth-engine-infra) | Terraform, Docker Compose, documentation |
+| [auth-engine-data](https://github.com/auth-engine/auth-engine-data) | RBAC seeding & super-admin bootstrap |
+| [auth-engine-docs](https://github.com/auth-engine/auth-engine-docs) | Platform documentation (MkDocs) |
+| [auth-engine-infra](https://github.com/auth-engine/auth-engine-infra) | Terraform & Docker Compose |
 | [.github](https://github.com/auth-engine/.github) | Org profile, CONTRIBUTING, SECURITY |
 
 **Documentation (canonical):** [docs.authengine.org](https://docs.authengine.org)
@@ -55,7 +57,7 @@ Clone URLs in `compose/.env` default to the `auth-engine` org on GitHub.
 git clone https://github.com/auth-engine/auth-engine.git
 cd auth-engine
 uv sync
-cp .env.example .env   # configure Postgres, Redis, MongoDB
+cp .env.example .env.local   # configure Postgres, Redis, MongoDB
 auth-engine migrate
 auth-engine run
 ```
@@ -85,7 +87,7 @@ Point `NEXT_PUBLIC_API_URL` at a running API (local or remote).
 3. **Test locally** before opening the PR:
    - Backend: lint/typecheck via CI; run migrations if you changed models.
    - Dashboard: `npm run build` must pass.
-   - Docs: verify links if you edited `auth-engine-infra/docs/`.
+   - Docs: `mkdocs build --strict` if you edited `auth-engine-docs/`.
 4. **Describe your PR:**
    - What changed and why
    - How you tested it
@@ -100,7 +102,7 @@ Maintainers will review when they can. Be patient — this is an early-stage ope
 
 - Match existing style in each repo (Ruff/mypy for Python, ESLint for TypeScript).
 - Do not commit secrets (`.env`, API keys, passwords). Use `.env.example` for templates only.
-- Add or update documentation in `auth-engine-infra/docs/` when behavior changes.
+- Add or update documentation in `auth-engine-docs/docs/` when behavior changes.
 - Prefer small, readable diffs over large refactors unless discussed in an issue first.
 
 ---
